@@ -16,17 +16,17 @@ class NasaSearchService
   # end
 
   def self.find_asteroid(id)
-    get_url("/ne0/rest/v1/neo/#{id}&api_key=#{ENV["NASA_KEY"]}")
+    get_url("/neo/rest/v1/neo/#{id}?api_key=#{ENV["NASA_KEY"]}")
   end
 
   private
 
-    def get_url(url)
+    def self.get_url(url)
       response = conn.get(url)
       JSON.parse(response.body, symbolize_names: true)
     end
 
-    def conn
+    def self.conn
       Faraday.new(url: 'https://api.nasa.gov')
     end
 end

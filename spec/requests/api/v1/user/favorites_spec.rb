@@ -10,13 +10,11 @@ describe "Favorites Request Spec" do
     expect(response).to be_success
 
     res = JSON.parse(response.body, symbolize_names: true)
-binding.pry
-    expect(res[:id]).to eq(1)
-    expect(res[:user_id]).to eq(1)
-    expect(res[:asteroid]).to eq({
-      "name": "153306 (2001 JL1)",
-      "is_potentially_hazardous_asteroid": false,
+
+    expect(res.first[:asteroid]).to eq({
+      name: "153306 (2001 JL1)",
+      is_potentially_hazardous_asteroid: false,
     })
-    expect(res[:neo_reference_id]).to eq(2153306)
+    expect(res.first[:neo_reference_id]).to eq("2153306")
   end
 end

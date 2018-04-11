@@ -1,11 +1,11 @@
 class FavoritesSerializer < ActiveModel::Serializer
-  attributes :id, :asteroids, :neo_reference_id, :user_id
+  attributes :id, :asteroid, :neo_reference_id, :user_id
 
   def user_id
-    object.users.first.id
+    object.user.id
   end
-  
-  def asteroids
+
+  def asteroid
     data = NasaSearchService.find_asteroid(object.neo_reference_id)
     {
       name: data[:name],
