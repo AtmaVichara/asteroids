@@ -1,6 +1,7 @@
 class Asteroid
 
   def initialize(data = {})
+    binding.pry
     @neo_reference_id = data[:neo_reference_id]
     @name = data[:name]
     @potentially_hazardous = data[:is_potentially_hazardous_asteroid]
@@ -9,7 +10,7 @@ class Asteroid
 
 
   def self.grab_asteroids(start_date, end_date)
-    data = NasaSearchService.new(start_date, end_date).asteroid_feed
-
+    data = NasaSearchService.new(start_date, end_date).asteroid_feed[:near_earth_objects]
+    binding.pry
   end
 end

@@ -31,4 +31,5 @@ describe "GET /user" do
 
     expect(response.status).to eq 401
   end
+
 end
