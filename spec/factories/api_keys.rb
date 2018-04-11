@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :api_key do
-    value "TOO_LEGIT_TO_QUIT"
+    value "abc123"
     user
   end
 end
