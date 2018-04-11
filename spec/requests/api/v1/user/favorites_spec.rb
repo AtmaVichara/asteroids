@@ -20,17 +20,17 @@ describe "Favorites Request Spec" do
 
   it "can post to favorites" do
     user = create(:user)
-    api_key = create(:api_key)
+    api_key = create(:api_key, user: user)
     post "/api/v1/user/favorites?api_key=#{api_key.value}&neo_reference_id=2021277"
 
     expect(response).to be_success
 
     res = JSON.parse(response.body, symbolize_names: true)
 
-    expect(res.first[:asteroid]).to eq({
+    expect(res[:asteroid]).to eq({
       name: "21277 (1996 TO5)",
       is_potentially_hazardous_asteroid: false,
     })
-    expect(res.first[:neo_reference_id]).to eq("2021277")
+    expect(res[:neo_reference_id]).to eq("2021277")
   end
 end
