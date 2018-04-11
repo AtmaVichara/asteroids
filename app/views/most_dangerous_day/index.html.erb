@@ -1,0 +1,7 @@
+<h1>MOST DANGEROUS DAY</h1>
+<h2><%= @date %> has <%= @asteroids.count %> potentially dangerous near earth objects</h2>
+
+<% @asteroids.each do |asteroid| %>
+  <p> Name: <%= asteroid.name %> </p>
+  <p> NEO Reference ID: <%= asteroid.neo_reference_id %> </p>
+<% end %>
