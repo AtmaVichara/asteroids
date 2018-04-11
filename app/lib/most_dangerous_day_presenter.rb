@@ -7,7 +7,7 @@ class MostDangerousDayPresenter
   end
 
   def date
-    DateTime.parse(day_with_most_asteroids.first).strftime("%B%e, %Y")
+    DateTime.parse(day_with_most_dangerous_asteroids.first).strftime("%B%e, %Y")
   end
 
   def asteroids
@@ -32,7 +32,7 @@ class MostDangerousDayPresenter
   end
 
   def day_with_most_dangerous_asteroids
-    grouped_asteroids.max_by do |key, value|
+    group_asteroids.max_by do |key, value|
       value.count
     end
   end

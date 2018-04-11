@@ -1,13 +1,7 @@
 class MostDangerousDayController < ApplicationController
   def index
     # ain't this just an ugly bag of worms...
-
-    asteroids = Asteroid.grab_asteroids(params[:start_date], params[:end_date])
-    dangerous_roids = find_all_dangerous_asteroids(asteroids)
-    grouped_roids = group_asteroids(dangerous_roids)
-    date_with_most_asteroids = day_with_most_dangerous_asteroids(grouped_roids)
-    @date = DateTime.parse(date_with_most_asteroids.first).strftime("%B%e, %Y")
-    @asteroids = date_with_most_asteroids.last
+    @info = MostDangerousDayPresenter.new(params[:start_date], params[:end_date])
   end
 
   def find_all_dangerous_asteroids(roids)
